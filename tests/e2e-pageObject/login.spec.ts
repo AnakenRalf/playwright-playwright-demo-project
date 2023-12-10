@@ -16,6 +16,7 @@ test.describe('Login / Logout flow', () => {
   // negative
   test('Login error on empty fields', async ({ page }) => {
     await loginPage.login('', '')
+    await loginPage.wait(5000)
     await loginPage.assertErrorMessage('Epic sadface: Username is required')
   })
 
@@ -26,10 +27,10 @@ test.describe('Login / Logout flow', () => {
 
   //positive + logout
 
-  test('Login success + logout', async ({ page }) => {
+  test.only('Login success + logout', async ({ page }) => {
     await loginPage.login('standard_user', 'secret_sauce')
     await inventoryPage.validatePageURL()
     await inventoryPage.logout()
-    await loginPage.validatePageURL()
+    await loginPage.validatePageURL('https://www.saucedemo.com/')
   })
 })
