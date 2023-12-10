@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('Login / Logout flow', () => {
+test.describe.parallel('Login / Logout flow', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://www.saucedemo.com/')
   })
@@ -19,7 +19,9 @@ test.describe('Login / Logout flow', () => {
     const loginBtn = await page.locator('#login-button')
     await expect(loginBtn).toBeEnabled()
     await loginBtn.click()
-    await expect(page.locator('h3')).toContainText('Epic sadface: Password is required')
+    const getH3element = await page.locator('h3')
+    // await expect(getH3element).toContainText('Epic sadface: Password is require')
+    await expect(getH3element).toHaveText('Epic sadface: Password is required')
   })
 
   //positive + logout
