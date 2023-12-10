@@ -8,7 +8,8 @@
     "test:chromium": "npx playwright test --project=chromium",
     "test:firefox": "npx playwright test --project=firefox",
     "test:webkit": "npx playwright test --project=webkit",
-    "test:e2e": "npx playwright test --config=e2e.config.ts --project=chromium"
+    "test:e2e": "npx playwright test --config=e2e.config.ts --project=chromium",
+    "test:e2ePO": "npx playwright test --config=e2e-page-object.config.ts --project=chromium"
   },
   "author": "",
   "license": "ISC",
