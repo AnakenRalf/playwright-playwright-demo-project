@@ -19,6 +19,10 @@ export class LoginPage {
   }
   // Define login page methods
 
+  async validatePageURL() {
+    await expect(this.page).toHaveURL('https://www.saucedemo.com/')
+  }
+
   async goto() {
     await this.page.goto('https://www.saucedemo.com/')
   }
@@ -27,5 +31,9 @@ export class LoginPage {
     await this.usernameInput.fill(username)
     await this.passwordInput.fill(password)
     await this.loginButton.click()
+  }
+
+  async assertErrorMessage(errorMessage) {
+    await expect(this.errorText).toContainText(errorMessage)
   }
 }
